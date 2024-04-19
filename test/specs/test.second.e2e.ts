@@ -6,9 +6,10 @@ describe('Second My Login application', () => {
     it('should login with invalid credentials', async () => {
         await LoginPage.open()
 
-        await LoginPage.login('tomsmithth', 'SuperSecretPassword!')
+        // await LoginPage.login('tomsmith', 'SuperSecretPassword!')
+        await LoginPage.login('tomsmith', 'Super')
         await expect(SecurePage.flashAlert).toBeExisting()
-        expect(SecurePage.flashAlert).toHaveText(expect.stringContaining('You logged into a secure area!'))
+        await expect(SecurePage.flashAlert).toHaveText(expect.stringContaining('You logged into a secure area!'))
     })
 })
 
