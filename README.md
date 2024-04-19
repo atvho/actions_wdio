@@ -1,2 +1,2 @@
 "# actions_wdio"
-this is sccoter
+this is scooter
