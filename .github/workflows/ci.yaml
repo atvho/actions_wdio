@@ -14,7 +14,7 @@ jobs:
         - name: Test
           run: npm run test
         - uses: actions/upload-artifact@v4
-          # if: failure()
+          if: failure()
           with:
             name: html-report
             path: ./reports/html-reports
