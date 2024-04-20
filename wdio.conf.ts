@@ -1,7 +1,8 @@
 import type { Options } from '@wdio/types';
-import {ReportGenerator, HtmlReporter} from 'wdio-html-nice-reporter';
+// import {ReportGenerator, HtmlReporter} from 'wdio-html-nice-reporter';
+import { ReportAggregator } from 'wdio-html-nice-reporter';
 // const video = require('wdio-video-reporter');
-let reportAggregator: ReportGenerator;
+let reportAggregator: ReportAggregator;
 
 export const config: Options.Testrunner = {
     //
