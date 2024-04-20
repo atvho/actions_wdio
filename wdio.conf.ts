@@ -1,5 +1,6 @@
 import type { Options } from '@wdio/types';
 import {ReportGenerator, HtmlReporter} from 'wdio-html-nice-reporter';
+// const video = require('wdio-video-reporter');
 let reportAggregator: ReportGenerator;
 
 export const config: Options.Testrunner = {
@@ -140,6 +141,12 @@ export const config: Options.Testrunner = {
     // see also: https://webdriver.io/docs/dot-reporter
     // reporters: ['spec','html-nice'],
     reporters: ['spec',
+            // [video, {
+            //     saveAllVideos: true,       // If true, also saves videos for successful test cases
+            //     videoSlowdownMultiplier: 3, // Higher to get slower videos, lower for faster videos [Value 1-100]
+            //     videoRenderTimeout: 5,      // Max seconds to wait for a video to finish rendering\
+            //     outputDir: 'reports/html-reports/screenshots',
+            // }],
             ["html-nice", {
                 outputDir: './reports/html-reports/',
                 filename: 'report.html',
@@ -174,8 +181,18 @@ export const config: Options.Testrunner = {
      * @param {object} config wdio configuration object
      * @param {Array.<Object>} capabilities list of capabilities details
      */
-    // onPrepare: function (config, capabilities) {
-    // },
+    onPrepare: function (config, capabilities) {
+        reportAggregator = new ReportAggregator(
+            {
+                outputDir: './reports/html-reports/',
+                filename: process.env.TEST_BROWSER + '-master-report.html',
+                reportTitle: 'Micro-Magic Web Test Report',
+                browserName: process.env.TEST_BROWSER ? process.env.TEST_BROWSER : 'unspecified',
+                showInBrowser: true
+            });
+
+        reportAggregator.clean();
+    },
     /**
      * Gets executed before a worker process is spawned and can be used to initialize specific service
      * for that worker as well as modify runtime environments in an async fashion.
@@ -299,8 +316,11 @@ export const config: Options.Testrunner = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {<Object>} results object containing test results
      */
-    // onComplete: function(exitCode, config, capabilities, results) {
-    // },
+    onComplete: function (exitCode, config, capabilities, results) {
+        (async () => {
+            await reportAggregator.createReport();
+        })();
+    }
     /**
     * Gets executed when a refresh happens.
     * @param {string} oldSessionId session ID of the old session
