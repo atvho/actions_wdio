@@ -151,13 +151,13 @@ export const config: Options.Testrunner = {
             ["html-nice", {
                 outputDir: './reports/html-reports/',
                 filename: 'report.html',
-                reportTitle: 'Test Report Title',
+                reportTitle: 'Single Report Title',
                 linkScreenshots: true,
                 //to show the report in a browser when done
                 showInBrowser: true,
                 collapseTests: false,
                 //to turn on screenshots after every test
-                useOnAfterCommandForScreenshot: false
+                useOnAfterCommandForScreenshot: true
             }
             ]
     ],
@@ -186,9 +186,9 @@ export const config: Options.Testrunner = {
         reportAggregator = new ReportAggregator(
             {
                 outputDir: './reports/html-reports/',
-                filename: process.env.TEST_BROWSER + '-master-report.html',
-                reportTitle: 'Micro-Magic Web Test Report',
-                browserName: process.env.TEST_BROWSER ? process.env.TEST_BROWSER : 'unspecified',
+                filename: 'master-report.html',
+                reportTitle: 'Suite Test Report',
+                browserName: 'Chrome',
                 showInBrowser: true
             });
 
@@ -273,8 +273,12 @@ export const config: Options.Testrunner = {
      * @param {boolean} result.passed    true if test has passed, otherwise false
      * @param {object}  result.retries   information about spec related retries, e.g. `{ attempts: 0, limit: 0 }`
      */
-    // afterTest: function(test, context, { error, result, duration, passed, retries }) {
-    // },
+    afterTest: function(test, context, { error, result, duration, passed, retries }) {
+        if (error) {
+            browser.takeScreenshot();
+        }
+    },
+    
 
 
     /**
