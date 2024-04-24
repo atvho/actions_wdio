@@ -88,18 +88,20 @@ export const baseConfig: Options.Testrunner = {
     //     // action for activation developer mode toggle
     //     browser.execute('localStorage.setItem("DEV_MODE_ENABLED", "true")');
     // },
-    beforeSuite: function (suite) {
-        reportAggregator.clean();
-    },
     afterTest: async function(test, context, { error, result, duration, passed, retries }) {
         if (!passed) {
             await browser.takeScreenshot();
         }
     },
-    onComplete: function (exitCode, config, capabilities, results) {
+    afterSuite: function (suite) {
         (async () => {
             await reportAggregator.createReport();
         })();
-    }
+    },
+    // onComplete: function (exitCode, config, capabilities, results) {
+    //     (async () => {
+    //         await reportAggregator.createReport();
+    //     })();
+    // }
 
 }
