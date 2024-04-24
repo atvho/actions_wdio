@@ -22,15 +22,15 @@ jobs:
         - name: Test nightly suite
           run: npm run selenoid
         - uses: actions/upload-artifact@v4
-          if: failure()
+          # if: failure()
           with:
             name: html-report-nightly
             path: ./reports/html-reports
-        - name: Test export suite
-          run: npm run export
-        - uses: actions/upload-artifact@v4
-          if: failure()
-          with:
-            name: html-report-export
-            path: ./reports/html-reports
+        # - name: Test export suite
+        #   run: npm run export
+        # - uses: actions/upload-artifact@v4
+        #   if: failure()
+        #   with:
+        #     name: html-report-export
+        #     path: ./reports/html-reports
         
