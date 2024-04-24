@@ -21,10 +21,15 @@ jobs:
           run: npm install
         - name: Test export suite
           run: npm run export
+        - uses: actions/upload-artifact@v4
+          if: failure()
+          with:
+            name: html-report
+            path: ./reports/html-reports
         - name: Test nightly suite
           run: npm run selenoid
         - uses: actions/upload-artifact@v4
           if: failure()
           with:
-            name: html-report
+            name: html-report-nightly
             path: ./reports/html-reports

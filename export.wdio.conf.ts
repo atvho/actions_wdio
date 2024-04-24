@@ -2,10 +2,6 @@ import { baseConfig } from "./base.wdio.conf.ts";
     
 export const config: WebdriverIO.Config = {
     ...baseConfig,
-    hostname: 'build.luy.tools',
-    path: '/wd/hub',
-    protocol:'http',
-    port:4444,
     maxInstances: 1,
     capabilities: [{
         maxInstances: 1,
