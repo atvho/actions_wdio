@@ -4,6 +4,7 @@
   "scripts": {
     "localtest": "npx wdio semilocal.wdio.conf.ts --spec",
     "selenoid": "npx wdio selenoid.wdio.conf.ts --suite nightly",
+    "export": "npx wdio export.wdio.conf.ts --suite export",
     "chromeheadless:parallel": "npx wdio selenoid.wdio.conf.ts --suite",
     "chromeheadless:sequential": "npx wdio remote.seq.wdio.conf.ts --suite",
     "chromeheaded:sequential": "npx wdio export.wdio.conf.ts --suite",

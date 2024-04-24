@@ -9,7 +9,7 @@ export const config: WebdriverIO.Config = {
         'goog:chromeOptions': {
             args: [
                 '--window-size=1920,1080',
-                // '--headless'
+                '--headless'
             ],
             prefs: {
               'directory_upgrade': true,

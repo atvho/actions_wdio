@@ -21,6 +21,8 @@ jobs:
           run: npm install
         - name: Test nightly suite
           run: npm run selenoid
+        - name: Test export suite
+          run: npm run export
         - uses: actions/upload-artifact@v4
           if: failure()
           with:

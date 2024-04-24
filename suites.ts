@@ -6,6 +6,10 @@ export const testSuites = {
     special: [
         './test/specs/test.third.e2e.ts',
         
+    ],
+    export: [
+        './test/specs/test.fourth.e2e.ts',
+        
     ]
 
 }
