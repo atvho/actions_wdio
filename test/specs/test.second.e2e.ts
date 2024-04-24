@@ -10,8 +10,8 @@ describe('Second test application', () => {
 
     it('should login second with invalid credentials', async () => {
 
-        await LoginPage.login('tomsmith', 'SuperSecretPassword!')
-        // await LoginPage.login('tomsmith', 'Super')
+        // await LoginPage.login('tomsmith', 'SuperSecretPassword!')
+        await LoginPage.login('tomsmith', 'Super')
         await expect(SecurePage.flashAlert).toBeExisting()
         await expect(SecurePage.flashAlert).toHaveTextContaining('You logged into a secure area!')
     })
