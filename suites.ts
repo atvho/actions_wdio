@@ -8,7 +8,7 @@ export const testSuites = {
         
     ],
     export: [
-        './test/specs/test.fourth.e2e.ts',
+        './test/specs/test.export.e2e.ts',
         
     ]
 

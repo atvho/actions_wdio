@@ -93,15 +93,10 @@ export const baseConfig: Options.Testrunner = {
             await browser.takeScreenshot();
         }
     },
-    afterSuite: function (suite) {
+    onComplete: function (exitCode, config, capabilities, results) {
         (async () => {
             await reportAggregator.createReport();
         })();
-    },
-    // onComplete: function (exitCode, config, capabilities, results) {
-    //     (async () => {
-    //         await reportAggregator.createReport();
-    //     })();
-    // }
+    }
 
 }
