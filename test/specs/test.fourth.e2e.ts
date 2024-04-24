@@ -1,19 +1,18 @@
 import { expect } from '@wdio/globals'
-import LoginPage from '../pageobjects/login.page.js'
+import DownloadPage from '../pageobjects/download.page.js'
 import SecurePage from '../pageobjects/secure.page.js'
 
 describe('Fourth test export application', () => {
-    it('should login fourth', async () => {
-        await LoginPage.open()
-
+    it('should open download page', async () => {
+        await DownloadPage.open()
     })
 
-    it('should login with invalid verification', async () => {
-
-        await LoginPage.login('tomsmith', 'SuperSecretPassword!')
-        // await LoginPage.login('tomsmith', 'Super')
+    it('should click to download picture', async () => {
+        await DownloadPage.list.waitForDisplayed()
+        await DownloadPage.pictures[1].waitForClickable()
+        await DownloadPage.pictures[1].click()
+        await browser.pause(2000)
         await expect(SecurePage.flashAlert).toBeExisting()
-        await expect(SecurePage.flashAlert).toHaveTextContaining('blabla')
     })
 })
 
