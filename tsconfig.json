@@ -25,6 +25,10 @@
     },
     "include": [
         "test",
-        "wdio.conf.ts"
+        "base.wdio.conf.ts",
+        "semilocal.wdio.conf.ts",
+        "selenoid.wdio.conf.ts",
+        "remote.seq.wdio.conf.ts",
+        "export.wdio.conf.ts",
     ]
 }

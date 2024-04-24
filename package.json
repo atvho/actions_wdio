@@ -1,16 +1,22 @@
 {
-  "name": "wdio_actions",
+  "name": "test_wdio",
   "type": "module",
+  "scripts": {
+    "localtest": "npx wdio semilocal.wdio.conf.ts --spec",
+    "chromeheadless:parallel": "npx wdio selenoid.wdio.conf.ts --suite",
+    "chromeheadless:sequential": "npx wdio remote.seq.wdio.conf.ts --suite",
+    "chromeheaded:sequential": "npx wdio export.wdio.conf.ts --suite",
+    "chromeheaded:parallel": "echo 'Config doesn't exists, see package file'"
+  },
+  "author": "me",
+  "license": "MIT",
   "devDependencies": {
-    "@wdio/cli": "^8.36.0",
-    "@wdio/local-runner": "^8.36.0",
-    "@wdio/mocha-framework": "^8.36.0",
-    "@wdio/spec-reporter": "^8.36.0",
+    "@wdio/cli": "^8.36.1",
+    "@wdio/local-runner": "^8.36.1",
+    "@wdio/mocha-framework": "^8.36.1",
+    "@wdio/spec-reporter": "^8.36.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5",
     "wdio-html-nice-reporter": "^8.1.6"
-  },
-  "scripts": {
-    "test": "wdio run ./wdio.conf.ts"
   }
 }
