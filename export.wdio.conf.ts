@@ -11,9 +11,9 @@ export const config: WebdriverIO.Config = {
         maxInstances: 1,
         browserName: 'chrome',
         'goog:chromeOptions': {
-            // args: [
-            //     '--headless'
-            // ],
+            args: [
+                '--headless'
+            ],
             prefs: {
               'intl.accept_languages': 'en,EN',
               'directory_upgrade': true,
