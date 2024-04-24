@@ -19,7 +19,7 @@ jobs:
             node-version: 20
         - name: Install
           run: npm install
-        - name: Test
+        - name: Test nightly suite
           run: npm run test
         - uses: actions/upload-artifact@v4
           if: failure()
