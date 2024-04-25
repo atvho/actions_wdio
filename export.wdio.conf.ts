@@ -16,8 +16,7 @@ export const config: WebdriverIO.Config = {
               'intl.accept_languages': 'en,EN',
               'directory_upgrade': true,
               'download.prompt_for_download': false,
-            //   'download.default_directory': '/home/seluser/Downloads'
-            'download.default_directory': pathToDownload,
+              'download.default_directory': pathToDownload,
             }
         } 
     }],

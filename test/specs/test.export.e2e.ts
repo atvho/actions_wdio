@@ -2,8 +2,11 @@
 import { expect } from 'chai'
 import DownloadPage from '../pageobjects/download.page.js'
 import SecurePage from '../pageobjects/secure.page.js'
+import path from 'path';
 import fsExtra from 'fs-extra';
 const pathToChromeDownloads = './exportDownloads';
+
+let createdFile: any;
 
 describe('Fourth test export application', () => {
     before(() => {
@@ -31,10 +34,14 @@ describe('Fourth test export application', () => {
         let file = fsExtra.existsSync(comparePath)
         console.log(`COMPARE PATH ${comparePath}`);
         console.log(`FILE BOOLEAN ${file}`);
-        const createdFile = fsExtra.readdirSync(pathToChromeDownloads);
+        createdFile = fsExtra.readdirSync(pathToChromeDownloads);
         console.log(`CREATED FILE ${createdFile}`);
         expect(createdFile[0]).to.have.string('.jpg');
-        
+    })
+
+    it('should verify file size', async () => {
+        const stats = fsExtra.statSync(path.join(pathToChromeDownloads, createdFile[0]));
+        expect(stats.size > 0).to.be.true;
     })
 })
 
