@@ -9,9 +9,10 @@ describe('Fourth test export application', () => {
 
     it('should click to download picture', async () => {
         await DownloadPage.list.waitForDisplayed()
-        await DownloadPage.pictures[1].waitForClickable()
-        await DownloadPage.pictures[1].click()
-        await browser.pause(2000)
+        const listItem = DownloadPage.pictures[0]
+        await listItem.waitForClickable()
+        await listItem.click()
+        await browser.pause(1000)
         await expect(SecurePage.flashAlert).toBeExisting()
     })
 })
