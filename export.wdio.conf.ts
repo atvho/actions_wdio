@@ -1,4 +1,6 @@
 import { baseConfig } from "./base.wdio.conf.ts";
+import path from 'path';
+const pathToDownload = path.resolve('exportDownloads');
     
 export const config: WebdriverIO.Config = {
     ...baseConfig,
@@ -14,7 +16,8 @@ export const config: WebdriverIO.Config = {
               'intl.accept_languages': 'en,EN',
               'directory_upgrade': true,
               'download.prompt_for_download': false,
-              'download.default_directory': '/home/seluser/Downloads'
+            //   'download.default_directory': '/home/seluser/Downloads'
+            'download.default_directory': pathToDownload,
             }
         } 
     }],
