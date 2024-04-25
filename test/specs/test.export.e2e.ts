@@ -30,12 +30,13 @@ describe('Fourth test export application', () => {
 
     it('should verify if file is downloaded', async () => {
         await browser.pause(1000)
-        let comparePath = `${pathToChromeDownloads}/screenshots.jpg`
-        let file = fsExtra.existsSync(comparePath)
-        console.log(`COMPARE PATH ${comparePath}`);
-        console.log(`FILE BOOLEAN ${file}`);
         createdFile = fsExtra.readdirSync(pathToChromeDownloads);
         console.log(`CREATED FILE ${createdFile}`);
+        let comparePath = `${pathToChromeDownloads}/${createdFile}`
+        let filePath = fsExtra.existsSync(comparePath)
+        console.log(`COMPARE PATH ${comparePath}`);
+        console.log(`FILE BOOLEAN ${filePath}`);
+        expect(filePath).to.be.true;
         expect(createdFile[0]).to.have.string('.jpg');
     })
 
