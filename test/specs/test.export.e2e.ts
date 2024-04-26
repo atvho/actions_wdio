@@ -21,7 +21,7 @@ describe('Fourth test export application', () => {
 
     it('should click to download picture', async () => {
         await DownloadPage.list.waitForDisplayed()
-        const listItem = DownloadPage.pictures[0]
+        const listItem = DownloadPage.pictures[3]
         await listItem.waitForClickable()
         await listItem.click()
         await browser.pause(1000)
@@ -37,7 +37,7 @@ describe('Fourth test export application', () => {
         console.log(`COMPARE PATH ${comparePath}`);
         console.log(`FILE BOOLEAN ${filePath}`);
         expect(filePath).to.be.true;
-        expect(createdFile[0]).to.have.string('.jpg');
+        expect(createdFile[0]).to.have.string('.png');
     })
 
     it('should verify file size', async () => {
