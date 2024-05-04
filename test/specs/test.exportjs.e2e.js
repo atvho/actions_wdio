@@ -6,7 +6,7 @@ import path from 'path';
 import fsExtra from 'fs-extra';
 const pathToChromeDownloads = './exportDownloads';
 
-let createdFile: any;
+let createdFile;
 
 describe('FIFTH test export JS application', () => {
     before(() => {
