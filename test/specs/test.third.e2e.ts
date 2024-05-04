@@ -12,6 +12,7 @@ describe('Third test application', () => {
 
         await LoginPage.login('tomsmith', 'SuperSecretPassword!')
         // await LoginPage.login('tomsmith', 'Super')
+        
         await expect(SecurePage.flashAlert).toBeExisting()
         await expect(SecurePage.flashAlert).toHaveTextContaining('blabla')
     })
