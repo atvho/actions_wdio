@@ -16,4 +16,3 @@ describe('Second My Login application', () => {
         await expect(SecurePage.flashAlert).toHaveText(expect.stringContaining('You logged into a secure area!'))
     })
 })
-
